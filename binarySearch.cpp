@@ -1,4 +1,4 @@
-#include "stdafx.h"
+// #include "stdafx.h"
 #include <iostream>
 using namespace std;
 #define N 5
@@ -34,7 +34,7 @@ int Sort_Search(int value)
 	return -1;
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
 	int i, n, index;
 	cout << "Enter the elements of one-dimensional array\n";
