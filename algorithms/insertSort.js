@@ -10,9 +10,9 @@ const swap = (x, y) => {
 };
 
 const insertSort = () => {
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 1; i < array.length; i++) {
     let j = i;
-    while (j > 0 && array[j] < array[j - 1]) {
+    while (j >= 0 && array[j] < array[j - 1]) {
       swap(j, j - 1);
       j--;
     }
@@ -38,7 +38,8 @@ function insertionSort(arr, n) {
   }
 }
 
-document.write("array = ", array, "<br>");
-//insertSort();
-insertionSort(array, n);
-document.write("array = ", array, "<br>");
+//document.write("array = ", array, "<br>");
+insertSort();
+// insertionSort(array, n);
+console.log(array);
+//document.write("array = ", array, "<br>");
