@@ -1,32 +1,46 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
 class Stack {
   constructor() {
-    this.items = [];
-    this.count = 0;
+    this.first = null;
+    this.last = null;
+    this.size = 0;
   }
 
-  push(element) {
-    this.items[this.count] = element;
-    console.log(`${element} added to ${this.count}`);
-    this.count += 1;
-    return this.count - 1;
+  push(val) {
+    const newNode = new Node(val);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      let temp = this.first;
+      this.first = newNode;
+      this.first.next = temp;
+    }
+    return ++this.size;
   }
 
   pop() {
-    if (this.count === 0) return undefined;
-    let deletedItem = this.items[this.count - 1];
-    console.log(`${deletedItem} was removed`);
-    this.count -= 1;
-    return deletedItem;
+    if (!this.first) return null;
+    let temp = this.first;
+    if (this.first === this.last) this.last = null;
+    this.first = this.first.next;
+    this.size--;
+    return temp.value;
   }
 
   peek() {
-    console.log(`Top element is ${this.items[this.count - 1]}`);
-    return this.items[this.count - 1];
+    console.log(`Top element is ${JSON.stringify(this.first)}`);
+    return this.first;
   }
 
   isEmpty() {
-    console.log(this.count === 0 ? "stack is empty" : "stack is NOT empty");
-    return this.count === 0;
+    console.log(this.size === 0 ? "stack is empty" : "stack is NOT empty");
+    return this.size === 0; // !this.first
   }
 }
 
@@ -36,3 +50,6 @@ stack.push(200);
 stack.push(300);
 stack.push(400);
 stack.push(500);
+stack.peek();
+stack.pop();
+stack.peek();
